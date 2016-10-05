@@ -9,13 +9,23 @@ var canvas = document.getElementById('screen');
 var game = new Game(canvas, update, render);
 var image = new Image();
 image.src = 'assets/pipes.png';
+var debug = true;
+var widthCell = Math.floor(canvas.width/8);
+var heightCell = Math.floor(canvas.height/8);
 
-// TODO: Place the pipe tiles on the board in random order
 
 canvas.onclick = function(event) {
   event.preventDefault();
-  // TODO: determine which pipe tile was clicked on
-  // TODO: rotate the pipes in the pipe tile
+  // TODO: Place or rotate pipe tile
+}
+var currentIndex, currentX, currentY;
+canvas.onmousemove = function(event){
+    event.preventDefault();
+    currentX = event.offsetX;
+    currentY = event.offsetY;
+    var x = Math.floor((currentX + 3) / (canvas.width/8));
+    var y = Math.floor((currentY + 3) / (canvas.height/8));
+    currentIndex = y * 8 + x;
 }
 
 /**
@@ -53,6 +63,16 @@ function update(elapsedTime) {
 function render(elapsedTime, ctx) {
   ctx.fillStyle = "#777777";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  if(debug){
+    var x = currentIndex % 8;
+    var y = Math.floor(currentIndex / 8);
+    ctx.strokeStyle = "#ff0000";
+    ctx.beginPath();
+    ctx.arc(currentX, currentY, 3, 0, 2*Math.PI);
+    ctx.rect(x * widthCell + 3, y * heightCell + 3, widthCell-2, heightCell-2);
+    ctx.stroke();
+  }
+
 
   // TODO: Render the board
 

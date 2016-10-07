@@ -5,9 +5,21 @@
     <link type="text/css" rel="stylesheet" href="game.css" />
   </head>
   <body>
+      <embed src="./assets/Puzzle Theme1.wav" autostart="true" loop="true" hidden="true" />
+
     <h1>Play Pipes</h1>
+    <h2>Level:</h2>
+    <h3 id="level"></h3>
+    <h2>Score:</h2>
+    <h3 id="score"></h3>
     <canvas id="screen" width="1024" height="860"></canvas>
     <h2>Instructions</h2>
+    <p>
+        1.The fluid will first fill the green start square then advance onwards
+        2.left click the squares you want pipes in and after that right click to rotate
+        3.the start cell can be connected by either the right side or down
+        4.the end cell can be connected by either the left side or up
+    </p>
     <script type="text/javascript" src="bundle.js"></script>
   </body>
 </html>
